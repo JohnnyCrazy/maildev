@@ -41,9 +41,9 @@
     "test": "standard && nyc _mocha --exit --timeout 5000",
     "lint": "standard",
     "lint:fix": "standard --fix",
-    "dev": "node ./scripts/dev.js && npm run css-watch",
-    "css": "node-sass --output-style compressed -o app/styles assets/styles/style.scss",
-    "css-watch": "node-sass -wr --output-style compressed -o app/styles assets/styles/style.scss",
+    "dev": "node ./scripts/dev.js && pnpm run css-watch",
+    "css": "sass --output-style compressed -o app/styles assets/styles/style.scss",
+    "css-watch": "sass -wr --output-style compressed -o app/styles assets/styles/style.scss",
     "docker-build": "./scripts/dockerBuild.sh",
     "docker-run": "docker run --rm -p 1080:1080 -p 1025:1025 maildev/maildev:$npm_package_version",
     "docker-push": "./scripts/dockerPush.sh",
@@ -67,6 +67,7 @@
     "mime": "2.4.4",
     "nodemailer": "^6.7.2",
     "rimraf": "^3.0.2",
+    "sass": "^1.62.1",
     "smtp-server": "3.11.0",
     "socket.io": "4.4.1",
     "uue": "3.1.2"
@@ -78,7 +79,6 @@
     "jest": "^27.5.1",
     "jest-mock": "^27.5.1",
     "mocha": "^9.2.2",
-    "node-sass": "^7.0.0",
     "nodemon": "^2.0.15",
     "nyc": "^15.1.0",
     "standard": "^16.0.4"

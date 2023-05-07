@@ -1,14 +1,15 @@
 # Base
-FROM node:16-alpine as base
+FROM node:18-alpine as base
 ENV NODE_ENV production
+
+RUN corepack enable && corepack prepare pnpm@8.4.0 --activate
 
 # Build
 FROM base as build
 WORKDIR /root
 COPY package*.json ./
-RUN npm install \
-  && npm prune \
-  && npm cache clean --force
+COPY pnpm-lock.yaml ./
+RUN pnpm i --frozen-lockfile --prod
 
 # Prod
 FROM base as prod
